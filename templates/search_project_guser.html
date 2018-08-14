@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search_project</title>
+    <style>
+        body {
+            background-image:url(http://www.xxx.jpg);
+            background-position:center;
+            margin-top:20px;
+	        margin-bottom:100px;
+	        margin-right:100px;
+	        margin-left:100px;
+        }
+        table,td,th {
+	        border:1px solid darkgrey;
+        }
+        table {
+	        width:100%;
+            border-collapse: collapse;
+            text-align:center;
+
+        }
+        th {
+            background-color:rgb(143,119,181);
+            color:white;
+	        height:50px;
+        }
+        td{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="/home"><button type="button" name = "home">back</button></a><br><br>
+    <center>
+    <p class="center">
+    <h1 align="center">search for program</h1><br>
+    <form action="/home/search/project"method="post">
+        <p align="center">
+        {% csrf_token %}
+        program name:<input type="test"name="keyword_pname"/>&nbsp;&nbsp;
+        date:<input type="test"name="keyword_pdate"/>&nbsp;&nbsp;
+        time:<input type="test"name="keyword_ptime"/>
+        <button type="submit" name="search">search</button>
+        </p>
+    </form>
+    <br>
+
+    {% if srch_flag == 1 %}
+        <table name="srch_project_list" border="1">
+        <thead>
+            <tr>
+                <th>program ID</th>
+                <th>program name</th>
+                <th>date</th>
+                <th>time</th>
+                <th>surplus quota</th>
+                <th>total quota</th>
+                <th>introduction</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for project_info in results %}
+                    <tr>
+                        <td>{{ project_info.0 }}</td>
+                        <td>{{ project_info.1 }}</td>
+                        <td>{{ project_info.2 }}</td>
+                        <td>{{ project_info.3 }}</td>
+                        <td>{{ project_info.4 }}</td>
+                        <td>{{ project_info.5 }}</td>
+                        <td>{{ project_info.6 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br>
+        <form action="/home/add/appoint"method="post">
+            <h3>register<br></h3>
+            program ID:<input type="text"name="ap_id"><br><br>
+            user ID:<input type="text"name="am_id"><br><br>
+            <input type="submit"value="submit">
+        </form>
+        <form action="/home/delete/project"method="post">
+            <h3>delete program<br></h3>
+            program ID:<input type="text"name="dp_id"><br><br>
+            <input type="submit"value="delete">
+        </form>
+        <form action="/home/add/project"method="post">
+            <h3>add program<br></h3>
+            program ID:<input type="text"name="map_id"><br><br>
+            program name:<input type="text"name="map_name"><br><br>
+            date:<input type="text"name="map_date"><br><br>
+            time:<input type="text"name="map_time"><br><br>
+            total quota:<input type="text"name="map_capa"><br><br>
+            introduction:<input type="text"name="map_intro"><br><br>
+            <input type="submit"value="add">
+        </form>
+        <form action="/home/alter/project"method="post">
+            <h3>change program infomation<br></h3>
+            program ID:<input type="text"name="map_id"><br><br>
+            program name:<input type="text"name="map_name"><br><br>
+            date:<input type="text"name="map_date"><br><br>
+            time:<input type="text"name="map_time"><br><br>
+            surplus quota:<input type="text"name="map_remain"><br><br>
+            total quota:<input type="text"name="map_capa"><br><br>
+            introduction:<input type="text"name="map_intro"><br><br>
+            <input type="submit"value="change">
+        </form>
+    {% endif %}
+    {% if srch_flag == 0 %}
+        <p align="center">not matched</p>
+    {% endif %}
+    </p>
+    </center>
+</body>
+</html>

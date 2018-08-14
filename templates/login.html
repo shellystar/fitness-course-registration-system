@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+    .center {
+	    text-align:center;
+    }
+    body {
+
+        background-color:white;
+        background-position:center;
+    }
+    h1{
+        font-family: "Agency FB", Times, sans-serif;
+        font-size:70px;
+        color:darkslateblue;
+    }
+    h2{
+        color:darkslateblue;
+    }
+</style>
+</head>
+
+
+<body class="center">
+    <br><br><h1 align="center">Fitness Club</h1>
+    <h2 align="center">Sign in</h2>
+    <table align="center">
+     <tr>
+        <form action="/login/log"method = "post">
+        {% csrf_token %}
+        account:<input type = "text"name="user_account"/><br>
+        <br>
+        password:<input type = "password"name="user_password"/><br>
+        <br>
+        Type:
+        <input type="radio" name="user_type" value="member">User
+        <input type="radio" name="user_type" value="gym">Club
+        <br><br>
+        <td>
+        <button type="submit">Sign in</button>&nbsp;&nbsp;
+        </td>
+    </form>
+     <td>
+    <form action="/register_gym"method="post">
+        <button type="submit">register club</button>&nbsp;&nbsp;
+    </form>
+    </td>
+    <td>
+    <form action="/register_mem"method="post">
+        <button type="submit">register user</button>
+    </form>
+    </td>
+        </tr>
+    </table>
+</body>
+</html>

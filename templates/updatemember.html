@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update_member</title>
+    <style>
+        .main {
+	        margin-left:590px;
+            margin-right:auto;
+	        width:100%;
+        }
+        body {
+            background-image:url(http://www.xxx.jpg);
+            background-color:rgb(190,210,182);
+        }
+    </style>
+</head>
+<body>
+    <a href="/home"><button type="button" name = "home">back</button></a><br><br>
+    <h1 align="center">change user information</h1><br>
+    <form action="/home/update/mem"method="post">
+        <p class="main">
+        {% csrf_token %}
+        password <sup>*</sup>:<br><input type = "password"name="u_password"/><br>
+        <br>
+        name:<br><input type = "test"name="u_name"/><br>
+        <br>
+        gender:<select name = "gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <br><br>
+        tele:<br><input type = "test"name="phone"/><br>
+        <br>
+        age:<br><input type = "test"name="age"/><br>
+        <br>
+        </p>
+        <p align="center"><button type="submit">Submit</button></p>
+    </form>
+家
+</body>
+</html>

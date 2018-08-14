@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home_mem</title>
+    <style>
+        body {
+            background-color:white;
+            margin-right:110px;
+            margin-left:110px;
+        }
+
+        .welcome{
+	        text-align:right;
+            margin-right:65px;
+        }
+
+        .title{
+	        text-align:center;
+            background-position:center;
+        }
+        div.img {
+            margin: 40px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 200px;
+        }
+
+        div.img:hover {
+            border: 1px solid #777;
+        }
+
+        div.img img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            color:white;
+            background-color:rgb(143,119,181);
+            font-size:20px;
+            background-position: right bottom;
+        }
+
+        h1{
+            font-family: "Agency FB", Times, sans-serif;
+            font-size:60px;
+            color:darkslateblue;
+        }
+
+    </style>
+</head>
+
+<body class="main">
+    <a href="/login"><button type="button" name = "login">sign out</button></a>
+    <h1 class="title">Fitness Club<br></h1>
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="/home/update">
+               <img src="xxx.png" alt="change club info" width="300" height="200">
+            </a>
+            <div class="desc">change personal information</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+      <div class="img">
+          <a target="_blank" href="/home/search_gym">
+              <img src="xxx.jpg" alt="search program" width="300" height="200">
+          </a>
+          <div class="desc">search for club</div>
+      </div>
+    </div>
+
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="/home/search_project">
+               <img src="xxx.jpg" alt="search coach" width="300" height="200">
+            </a>
+        <div class="desc">search for program</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="img">
+            <a target="_blank" href="/home/search_appoint">
+                <img src="xxx.jpg" alt="search appointment" width="300" height="200">
+            </a>
+        <div class="desc">search for appointment</div>
+        </div>
+    </div>
+
+    <p class="ex"><h4 class="welcome">user ID： {{ user_account }}</h4></p>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search_project</title>
+    <style>
+        body {
+            background-image:url(http://www.xxx.com);
+            background-position:center;
+            margin-top:20px;
+	        margin-bottom:100px;
+	        margin-right:100px;
+	        margin-left:100px;
+        }
+        table,td,th {
+	        border:1px solid darkgrey;
+        }
+        table {
+	        width:100%;
+            border-collapse: collapse;
+            text-align:center;
+
+        }
+        th {
+            background-color:rgb(143,119,181);
+            color:white;
+	        height:50px;
+        }
+        td{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="/home"><button type="button" name = "home">back to homepage</button></a><br><br>
+    <center>
+    <h1 align="center">search for program</h1><br>
+    <form action="/home/search/project"method="post">
+        {% csrf_token %}
+        club name:<input type="test"name="keyword_pgym"/>&nbsp;&nbsp;
+        program name:<input type="test"name="keyword_pname"/>&nbsp;&nbsp;
+        date:<input type="test"name="keyword_pdate"/>&nbsp;&nbsp;
+        time:<input type="test"name="keyword_ptime"/>
+        <button type="submit" name="search">search</button>
+    </form>
+    <br>
+    {% if srch_flag == 1 %}
+        <table name="srch_project_list" border="1">
+        <thead>
+            <tr>
+                <th>program ID</th>
+                <th>program name</th>
+                <th>club</th>
+                <th>date</th>
+                <th>time</th>
+                <th>surplus quota</th>
+                <th>total quota</th>
+                <th>info</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for project_info in results %}
+                    <tr>
+                        <td>{{ project_info.0 }}</td>
+                        <td>{{ project_info.1 }}</td>
+                        <td>{{ project_info.2 }}</td>
+                        <td>{{ project_info.3 }}</td>
+                        <td>{{ project_info.4 }}</td>
+                        <td>{{ project_info.5 }}</td>
+                        <td>{{ project_info.6 }}</td>
+                        <td>{{ project_info.7 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <form action="/home/add/appoint"method="post">
+            <h3>register</h3>
+            program ID:<input type="text"name="ap_id">
+            <input type="submit"value="submit">
+        </form>
+    {% endif %}
+    {% if srch_flag == 0 %}
+        <p align="center">not matched</p>
+    {% endif %}
+    </center>
+</body>
+</html>

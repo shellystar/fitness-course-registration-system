@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gym_info</title>
+    <style>
+    body {
+        background-image:url(http://www.xxx.com);
+        background-color:rgb(190,210,182);
+        margin-top:20px;
+	    margin-bottom:100px;
+	    margin-right:250px;
+	    margin-left:250px;
+    }
+    table,td,th {
+        border:1px solid darkgrey;
+    }
+    table {
+        width:100%;
+        border-collapse: collapse;
+        text-align:center;
+        position:center;
+    }
+    th {
+        background-color:rgb(143,119,181);
+        color:white;
+        height:50px;
+    }
+    td{
+        background-color: white;
+    }
+
+    ul.main {list-style-type:circle;}
+
+    h1{
+        font-family: "Agency FB", Times, sans-serif;
+        font-size:60px;
+        color:darkslateblue;
+    }
+    span{
+        color:black;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="/home"><button type="button"name="home">back</button> </a>
+    <h1 align="center">Welcome to {{ gym_info.1 }}</h1>
+    <p align="center">
+        <span><strong>fitness club club ID：</strong></span>{{ gym_info.0 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><strong>open time：</strong></span>{{ gym_info.3 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span><strong>contact：</strong></span>{{ gym_info.4 }}<br>
+    </p>
+    <br>
+    <ul class="main"></ul>
+        <h3><li>address</li></h3>{{ gym_info.2 }}
+        <br><br>
+        <h3><li>gym introduction</li></h3>
+        {{ gym_info.5 }}
+        <br><br>
+        <h3><li>program introduction</li></h3>
+        {% if p_flag == 1 %}
+            <table name="gym_project_list" border="1">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>introduction</th>
+                </tr>
+            </thead>
+                <tbody>
+                {% for project_index in project_info %}
+                    <tr>
+                        <td>{{ project_index.0 }}</td>
+                        <td>{{ project_index.1 }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        <br>
+        {% endif %}
+        {% if p_flag == 0 %}
+            <p align="center">empty</p>
+        {% endif %}
+
+    <!--coach_name,coach_gender,coach_introduce-->
+        <br>
+        <h3><li>coach introduction</li></h3>
+        {% if c_flag == 1 %}
+            <table name="gym_coach_list" border="1">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>gender</th>
+                    <th>bio</th>
+                </tr>
+            </thead>
+                <tbody>
+                {% for coach_index in coach_info %}
+                    <tr>
+                        <td>{{ coach_index.0 }}</td>
+                        <td>{{ coach_index.1 }}</td>
+                        <td>{{ coach_index.2 }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+        {% endif %}
+        {% if c_flag == 0 %}
+            <p align="center">empty</p>
+        {% endif %}
+    </ul>
+</body>
+</html>

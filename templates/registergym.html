@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registergym</title>
+    <style>
+        .center {
+	        margin-left:580px;
+            margin-right:auto;
+	        width:100%;
+        }
+        body {
+            background-image:url(http://www.xxx.com);
+            background-color:rgb(190,210,182);
+        }
+    </style>
+</head>
+<body>
+    <br><br><h1 align="center">Register Club</h1><br>
+    <form action="/register/reg_gym"method="post">
+        {% csrf_token %}
+    <p class="center">
+        account<sup>*</sup>: <br><input type = "test"name="g_account"/><br>
+        <br>
+        password<sup>*</sup>:<br><input type = "password"name="g_password"/><br>
+        <br>
+        name<sup>*</sup>:<br><input type = "test"name="g_name"/><br>
+        <br>
+        address<sup>*</sup>:<br><input type = "test"name="g_addr"/><br>
+        <br>
+        open time<sup>*</sup>: (HH:MM-HH:MM e.g. 08:00-20:00)<br><input type = "test"name="g_open"/><br>
+        <br>
+        tele<sup>*</sup>:<br><input type = "test"name="g_phone"/><br>
+        <br>
+        introduction<br><input type = "test"name="g_intro"/><br>
+        <br>
+    </p>
+        <p align="center"><button type="submit">Submit</button></p>
+    </form>
+</body>
+</html>
